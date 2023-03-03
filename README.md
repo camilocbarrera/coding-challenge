@@ -3,7 +3,7 @@
 * [Context](#Conetxt)
   * [Exercise](#Exercise)
 
-## Conetxt
+## Context
 
 Exercise
 
