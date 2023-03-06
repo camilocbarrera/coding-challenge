@@ -9,7 +9,7 @@ class InputData:
 
     def read_file_to_list(self):
         with open(self.file_path, "r") as f:
-            content = f.read()
+            content = f.read().strip()
             rows_ = content.split('\n')
         return rows_
 
