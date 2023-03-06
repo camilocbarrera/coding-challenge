@@ -34,7 +34,7 @@ class InputData:
 
 class GenerateDatasets:
     """
-        A class for generating datasets from input data.
+        Class for generating datasets from input data.
     """
 
     def __init__(self, content_input_list):

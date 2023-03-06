@@ -2,19 +2,28 @@ from controller.payroll import PayrollController
 from data.constants import FILE_NAME
 
 
-def show_report():
+class Report:
+    """
+    Report class
     """
 
-    :return:
-    """
-    try:
+    def __init__(self):
+        """
+        Initializes objects for testing
+        """
+        self.input_data = FILE_NAME
+        self.controller = PayrollController(self.input_data)
 
-        input_data = FILE_NAME
-        payroll_controller = PayrollController(input_data)
+    def show_report(self):
+        """
+        Organize dictionary and show report.
+        :return: Print result from a dictionary
+        """
+        try:
 
-        result = payroll_controller.generate_report()
-        for employee, value_usd in result.items():
-            print(f" The amount to pay {employee} is: {value_usd}")
+            result = self.controller.generate_report()
+            for employee, value_usd in result.items():
+                print(f" The amount to pay {employee} is: {value_usd}")
 
-    except ValueError:
-        print("Debes verificar la estructura del archivo")
+        except ValueError:
+            print("Debes verificar la estructura del archivo")

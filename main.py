@@ -1,8 +1,9 @@
-from view.report import show_report
+from view.report import Report
 
 
 def run():
-    show_report()
+    report = Report()
+    report.show_report()
 
 
 if __name__ == '__main__':
