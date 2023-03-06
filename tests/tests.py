@@ -4,12 +4,18 @@ from controller.payroll import PayrollController
 
 class TestPayrollController(unittest.TestCase):
     def setUp(self):
-        self.input_data = "input.txt"
+        self.input_data = "tests/input_tests_cases.txt"
 
         self.controller = PayrollController(self.input_data)
 
     def test_generate_report(self):
-        expected_report = {'RENE': 215, 'ASTRID': 85, 'PEDRO': 170, 'CRIS': 540, 'MELI': 1620}
+        expected_report = {
+            'RENE': 645,
+            'ASTRID': 255,
+            'PEDRO': 600,
+            'CRIS': 1620,
+            'MELI': 4860
+        }
 
         self.assertEqual(self.controller.generate_report(), expected_report)
 
