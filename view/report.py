@@ -23,7 +23,7 @@ class Report:
 
             result = self.controller.generate_report()
             for employee, value_usd in result.items():
-                print(f" The amount to pay {employee} is: {value_usd}")
+                print(f" The amount to pay {employee} is: {value_usd} USD")
 
         except ValueError:
             print("Debes verificar la estructura del archivo")
