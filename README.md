@@ -147,3 +147,11 @@ FILE_NAME = './your_file_name.txt'
 ```bash
 python main.py
 ```
+
+
+Do you want to discuss this further 👀? 
+
+Reach Me on [LinkedIn](https://www.linkedin.com/in/cristiancamilocorrea/) 
+
+[cris ©](https://cristiancorrea.xyz/)
+
