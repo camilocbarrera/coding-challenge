@@ -151,7 +151,7 @@ python main.py
 
 Do you want to discuss this further 👀? 
 
-Reach Me on [LinkedIn](https://www.linkedin.com/in/cristiancamilocorrea/) 
+Reach me on [LinkedIn](https://www.linkedin.com/in/cristiancamilocorrea/) 
 
 [cris ©](https://cristiancorrea.xyz/)
 
