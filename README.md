@@ -79,8 +79,8 @@ The following diagram shows the classes created that control each of the interac
 ## Methodology
 To solve this challenge, try to imagine two data sets that could be joined. To do this, he first had to organize the data structures.
 
-## Handle Data
-### Rules Data
+### Handle Data
+#### Rules Data
 Heuristically I generate the data that contained the rules for the payroll.
 
 This is loaded from the `generate_rules_dataset()` method of the model layer.
@@ -109,8 +109,10 @@ This is loaded from the `generate_rules_dataset()` method of the model layer.
 Then the method `generate_dataset()` Converts the data structure to a tabular format, note that the data comes in the form start_at, end_at. So what this method does is create one for the number of hours that exist between each range, for each day.
 
 Eg. Notice how the record is increased by rows depending on the interval of start_at, end_at.
+
 <img width="536" alt="image" src="https://user-images.githubusercontent.com/85809276/223019987-bc7df04e-b143-452e-b659-dc97ca734e40.png">
-### Join Data
+
+#### Join Data
 Finally, the two data sets are joined via the unique key (day_type ,hour). These are the two columns that are required to obtain the value of the USD rate in each time slot. 
 
 Note how it is possible with this unique key to retrieve the values for each hour. After this it is only required to add by the name of the employee to add the payroll.
@@ -118,7 +120,7 @@ Note how it is possible with this unique key to retrieve the values for each hou
 <img width="1052" alt="image" src="https://user-images.githubusercontent.com/85809276/223021169-69a1b9c5-8c25-4521-bfe9-773c05a756a0.png">
 
 
-### Print results
+#### Print results
 The result of the joined data is a dictionary, which it is possible to iterate to group, this is done with the function `_aggregate_result(joined_dataset: Dict) -> Dict`. Which groups for each employee name. Adding the total hours worked.
 
 <img width="643" alt="image" src="https://user-images.githubusercontent.com/85809276/223021847-a203d3b3-800f-4c02-9f92-10103a75da0c.png">
