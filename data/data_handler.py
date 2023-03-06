@@ -4,22 +4,52 @@ from .constants import WEEK_DAYS
 
 
 class InputData:
+    """
+    This class is responsible for loading the file and validating it.
+    """
+
     def __init__(self, file_path):
         self.file_path = file_path
 
     def read_file_to_list(self):
-        with open(self.file_path, "r") as f:
-            content = f.read()
-            rows_ = content.split('\n')
-        return rows_
+        """
+        Reads input data from a file and converts it to a list.
+
+        :return: A list of text strings that represent the lines of the input file.
+        :raises FileNotFoundError: If the specified file is not found on the system.
+        :raises IOError: If there is an error reading the file.
+        """
+        try:
+            with open(self.file_path, "r") as f:
+                content = f.read().strip()
+                rows_ = content.split('\n')
+            return rows_
+        except FileNotFoundError:
+            print(f"File not found: {self.file_path}")
+            raise
+        except IOError:
+            print(f"Error reading file: {self.file_path}")
+            raise
 
 
 class GenerateDatasets:
+    """
+        Class for generating datasets from input data.
+    """
+
     def __init__(self, content_input_list):
+        """
+        Initializes a GenerateDatasets object.
+        :param input_data: A list of strings representing the input data.
+        """
         self.content_input_list = content_input_list
 
     @property
     def generate_dataset(self) -> Dict:
+        """
+        Generates a Dictionary DataFrame containing the data from the input file.
+        :return: A Dictionary DataFrame containing the data from the input file.
+        """
         DataSet = Dict[str, List]
         input_dataset: DataSet = {
             'id': [],
@@ -68,6 +98,10 @@ class GenerateDatasets:
 
     @staticmethod
     def generate_rules_dataset() -> Dict:
+        """
+        Generates a Dictionary DataFrame containing the rules for matching with input file.
+        :return: A Dictionary DataFrame containing the data generated from heuristic rules.
+        """
         range_day = ['week_days'] * 24 + ['weekend_days'] * 24
         hour = list(range(24)) * 2
         id = [range_day[i] + '-' + str(hour[i]) for i in range(len(range_day))]
@@ -84,16 +118,29 @@ class GenerateDatasets:
 
 
 class JoinDatasets:
+    """
+    This class are responsible to handle join between two datasets
+    """
+
     def __init__(self, dataset_a, dataset_b, key_join):
+        """
+        Initializes a Join object.
+        :param dataset_a: dataset A to join
+        :param dataset_b: dataset B to join
+        :param key_join:  Key with join two datasets
+        """
         self.dataset_a: Dict = dataset_a
         self.dataset_b: Dict = dataset_b
         self.key_join: str = key_join
 
     def join(self) -> Dict:
         """
+        Method to join two datasets with a similar key.
+        Takes all combinations and filter by a common key, similar to SQL Join operation
         rules_dataset:dataset_a
         input_dataset:dataset_b
-        :return:
+
+        :return: data_resp Dictionary dataset with the columns needed for payroll report
         """
 
         rules_dataset = self.dataset_a
@@ -116,9 +163,12 @@ class JoinDatasets:
 
 def _aggregate_result(joined_dataset: Dict) -> Dict:
     """
+    Aggregate result for a column and metric, to aggreagete.
+    By Default the aggregate function is SUM.
+    Similar to GROUP BY function in SQL
 
     :param joined_dataset:
-    :return:
+    :return: result Output aggregated by employee, and sum(value_usd)
     """
 
     # todo: abstract for any column
