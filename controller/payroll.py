@@ -3,13 +3,18 @@ from typing import Dict
 
 
 class PayrollController:
+    """
+    This class is in charge of controlling the functions that create,
+    validate, and join datasets.
+    """
+
     def __init__(self, input_data: str):
         self.input_data = input_data
 
     def generate_report(self):
         """
-
-        :return:
+        Generates a report from the input data provided.
+        :return: A dictionary containing the data aggregated from the provided datasets.
         """
         input_data = InputData(self.input_data)
         GenerateDatasets(input_data.read_file_to_list())
