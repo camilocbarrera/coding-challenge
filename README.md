@@ -1,7 +1,6 @@
 # Coding Challenge
 
 <!-- TOC -->
-* [Coding Challenge](#coding-challenge)
 * [Context](#context)
     * [Exercise](#exercise)
       * [Goal](#goal)
